@@ -3,6 +3,7 @@
     package="ru.ivanl.android.yandexmobility">
 
     <application
+        android:name=".ForYandexAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".UI.Adapter.Activity.DetailActivity"/>
     </application>
 
 </manifest>

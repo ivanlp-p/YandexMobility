@@ -36,27 +36,16 @@ public class GenreHelper extends  DBHelper {
 //  ==============================================================================================
 
     // Insert data from JSONDataObject oblects
-    public long insert(@NonNull List<JSONToArtistObject> jsonDataObjectList) {
+    public void insert(SQLiteDatabase db, @NonNull List<JSONToArtistObject> jsonDataObjectList) {
 
-        long result = DB_OP_ERROR;
-        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        try {
-            db.beginTransactionNonExclusive();
+        // Proceed every JSONDataObject
+        for (JSONToArtistObject o : jsonDataObjectList) {
 
-            // Proceed every JSONDataObject
-            for (JSONToArtistObject o : jsonDataObjectList) {
-
-                // Proceed every Genre name
-                for (String genreName : o.getGenres()) {
-                    result = baseInsert(db, DBArtist.GenreTable.TABLE_NAME, getContentValues(genreName));
-                }
+            // Proceed every Genre name
+            for (String genreName : o.getGenres()) {
+                baseInsert(db, DBArtist.GenreTable.TABLE_NAME, getContentValues(genreName));
             }
-
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
         }
-        return result;
     }
 
     // Get particular genre by genre name

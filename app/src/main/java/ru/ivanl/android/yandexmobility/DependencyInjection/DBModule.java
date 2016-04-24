@@ -3,10 +3,13 @@ package ru.ivanl.android.yandexmobility.DependencyInjection;
 
 import android.content.Context;
 
-import javax.inject.Singleton;
-import dagger.Module;
-import dagger.Provides;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+
+
+import dagger.Provides;
 import ru.ivanl.android.yandexmobility.DataBase.ArtistGenreHelper;
 import ru.ivanl.android.yandexmobility.DataBase.ArtistHelper;
 import ru.ivanl.android.yandexmobility.DataBase.DBHelper;

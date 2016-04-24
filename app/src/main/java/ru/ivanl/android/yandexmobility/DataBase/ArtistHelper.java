@@ -45,22 +45,12 @@ public class ArtistHelper extends DBHelper {
 //  Artist table methods
 //  ==============================================================================================
 
-    public long insert(@NonNull List<JSONToArtistObject> jsonDataObjectList) {
-        long result = DB_OP_ERROR;
-        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        try {
-            db.beginTransactionNonExclusive();
-
-            // Proceed every JSONDataObject
-            for (JSONToArtistObject o : jsonDataObjectList) {
-                baseInsert(db, DBArtist.ArtistTable.TABLE_NAME, getContentValues(o));
-            }
-
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
+    public void insert(SQLiteDatabase db, @NonNull List<JSONToArtistObject> jsonDataObjectList) {
+        // Proceed every JSONDataObject
+        for (JSONToArtistObject o : jsonDataObjectList) {
+            baseInsert(db, DBArtist.ArtistTable.TABLE_NAME, getContentValues(o));
         }
-        return result;
+
     }
 
     // Get given artists

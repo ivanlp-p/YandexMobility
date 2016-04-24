@@ -38,33 +38,23 @@ public class ArtistGenreHelper extends DBHelper{
 //  ArtistGenre table methods
 //  ==============================================================================================
 
-    public long insert(@NonNull List<JSONToArtistObject> jsonDataObjectList) {
-        long result = DB_OP_ERROR;
-        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        try {
-            db.beginTransactionNonExclusive();
+    public void insert(SQLiteDatabase db, @NonNull List<JSONToArtistObject> jsonDataObjectList) {
+        // Proceed every JSONDataObject
+        for (JSONToArtistObject o : jsonDataObjectList) {
 
-            // Proceed every JSONDataObject
-            for (JSONToArtistObject o : jsonDataObjectList) {
+            // Proceed every genre from JSONDataObject
+            long artistId = o.getId();
+            for (String genreName : o.getGenres()) {
 
-                // Proceed every genre from JSONDataObject
-                long artistId = o.getId();
-                for (String genreName : o.getGenres()) {
+                // Get genre id
+                Cursor cursor = genreHelper.query(genreName);
+                Long genreId = genreHelper.getId(cursor);
 
-                    // Get genre id
-                    Cursor cursor = genreHelper.query(genreName);
-                    Long genreId = genreHelper.getId(cursor);
-
-                    result = baseInsert(db, DBArtist.ArtistGenreTable.TABLE_NAME, getContentValues(artistId, genreId));
-                }
-
+                baseInsert(db, DBArtist.ArtistGenreTable.TABLE_NAME, getContentValues(artistId, genreId));
             }
 
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
         }
-        return result;
+
     }
 
     public Cursor query() {
