@@ -38,6 +38,7 @@ public class DetailActivity extends AppCompatActivity{
     private TextView albums;
     private TextView tracks;
     private TextView description;
+    private TextView link;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class DetailActivity extends AppCompatActivity{
         tracks = (TextView) findViewById(R.id.detail_tracks);
         description = (TextView) findViewById(R.id.detail_description);
         artistId = getIntent().getLongExtra(INTENT_NAME, -1);
+        link = (TextView) findViewById(R.id.detail_link);
 
         Cursor cursor = artistHelper.query(artistId);
 
@@ -75,6 +77,7 @@ public class DetailActivity extends AppCompatActivity{
         albums.setText(artistHelper.getAlbums(cursor).toString());
         tracks.setText(artistHelper.getTracks(cursor).toString());
         description.setText(artistHelper.getDescription(cursor));
+        link.setText(artistHelper.getLink(cursor));
         setTitle(artistHelper.getName(cursor));
 
     }

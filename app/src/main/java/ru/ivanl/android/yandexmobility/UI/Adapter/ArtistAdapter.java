@@ -64,10 +64,10 @@ public class ArtistAdapter extends CursorAdapter<ArtistAdapter.ArtistHolder> {
     public class ArtistHolder extends RecyclerView.ViewHolder {
 
         long id;
-        TextView artist;
-        TextView genres;
-        TextView albNTrk;
-        ImageView cover;
+        public final TextView artist;
+        public final TextView genres;
+        public final TextView albNTrk;
+        public final ImageView cover;
 
         public ArtistHolder(View itemView) {
             super(itemView);

@@ -49,7 +49,7 @@ public class DataService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
 
-        if (isConnectedToNetwork()) {
+       /* if (isConnectedToNetwork()) {*/
 
             try {
 
@@ -84,17 +84,17 @@ public class DataService extends IntentService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        //}
 
     }
 
     // Check network connection before attempting to download new data
 
-    private boolean isConnectedToNetwork() {
+/*    private boolean isConnectedToNetwork() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
-    }
+    }*/
 
     // Request Artist data via YandexService
     @Nullable

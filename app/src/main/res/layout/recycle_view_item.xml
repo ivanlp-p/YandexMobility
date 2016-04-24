@@ -26,13 +26,15 @@
                 android:id="@+id/recyclerview_name"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Артист"/>
 
             <TextView
                 android:id="@+id/recyclerview_genres"
                 android:textColor="@color/colorPrimary"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Жанры"/>
 
         </LinearLayout>
 
@@ -42,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:text="Альбомы"/>
 
     </RelativeLayout>
 
